@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mass</title>
+</head>
+<body>
+	<script>
+//Сгенерировать массив с клавиатуры
+	var n = [];
+	var sum = 0;
+
+	for(var i = 0; i < 2; i = i + 1){
+		n.push(Number(prompt()));
+
+//Проверить есть ли в массиве целые числа и подсчитать их количество
+
+		if (n[i] % 1 != 0){
+			console.log("ARROR 404");
+			break;
+		}
+	}
+	console.log(n[0] + n[1]);
+
+
+	
+
+	</script>
+</body>
+</html>
