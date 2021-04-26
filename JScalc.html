@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JScalculator</title>
+</head>
+<body>
+	<!--добавляем 2 поля для ввода и кнопки с соответсвующими фрифметическими действиями-->
+	<input type="textarea" class="screen">
+	<br>
+	<input type="textarea" class="screen_result" disabled="disabled">
+	<br>
+	<button class="active">+</button>
+	<button class="active">-</button>
+	<button class="active">*</button>
+	<button class="active">/</button>
+	<button class="active">=</button>
+	<style>
+	/* стилизуем наши поля для ввода и кнопки*/
+		.screen{
+			display: block;
+			text-align: center;
+		}
+		.screen_result{
+			display: block;
+			text-align: center;
+		}
+		.active{
+			float: left;
+			text-align: center;
+			background-color: red;
+			color: white;
+			margin-right: 5px;
+			width: 25px;
+			height: 25px;
+		}
+	</style>
+	<script>
+// Выбираем содержимое поля для ввода
+		var screen = document.querySelector(".screen");
+//выбираем содержимое поля для вывода результата
+		var result = document.querySelector(".screen_result");
+//Выбираем содержимое всех кнопок
+		var actives = document.querySelectorAll(".active");
+//делаем пробежку по всем кнопкам с классом active
+		for(var active of actives){
+//вешаем действие на кнопку
+			active.onclick = function(evt){
+//вешаем событие при нажатии на кнопки
+				switch(evt.target.innerHTML){
+					case "+":
+					case "-":
+					case "*":
+					case "/":
+					case "=":
+//создаем именную функцию с арифметичискими действиями
+						activeСalculator(screen, evt.target.innerHTML)
+//прерываем функцию
+						break;
+
+				}
+			}
+		}
+//опичываем функцию
+		function activeСalculator(screen, active){
+		if(active == "="){
+				result.value = result.value + screen.value;
+				result.value = eval(result.value);
+				return;
+			}
+			if(screen.value.length == 0){
+				alert("Ошибка");
+				return;
+			}
+			if(active == "/"){
+				if(Number(screen.value) == 0){
+					alert("Ошибка");
+					screen.value = "";
+					return;
+				}
+			}
+			result.value = result.value + screen.value + "" + active + "";
+			screen.value = "";
+			screen.focus();
+		}
+	</script>
+</body>
+</html>
