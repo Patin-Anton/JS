@@ -47,13 +47,13 @@
 			active.onclick = function(evt){
 //вешаем событие при нажатии на кнопки
 				switch(evt.target.innerHTML){
+					case "=":
+					case "/":
 					case "+":
 					case "-":
 					case "*":
-					case "/":
-					case "=":
 //создаем именную функцию с арифметичискими действиями
-						activeСalculator(screen, evt.target.innerHTML)
+						actСalculator(screen, evt.target.innerHTML)
 //прерываем функцию
 						break;
 
@@ -61,7 +61,7 @@
 			}
 		}
 //опичываем функцию
-		function activeСalculator(screen, active){
+		function actСalculator(screen, active){
 		if(active == "="){
 				result.value = result.value + screen.value;
 				result.value = eval(result.value);

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<style>
+		.modal{
+			position: fixed;
+			left:50%;
+			top:0;
+			background-color: #f00;
+			display: none;
+		}
+		.modal.active{
+			display: block;
+		}
+		.modal h1{
+			text-align: center;
+			color: #fff;
+			font-size: 50px;
+		}
+		.close_btn{
+			position: absolute;
+			top: 0px;
+			right: 0px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="modal">
+	</div>
+
+	<button class="start_btn">1</button>
+	<script>
+
+		var modal = {
+			width: 200,
+			height: 200,
+			target: null,
+			onTarget: function(){
+				var width = this.width;
+				var height = this.height;
+				this.target.onclick = function(){
+					var modal = document.querySelector(".modal");
+					modal.classList.add("active");
+					modal.style.width = width + "px";
+					modal.style.height = height + "px";
+	//добавляем кнопку закрытия
+					var divElement = document.querySelector(".modal");
+					divElement.classList.add("modal");
+					divElement.innerHTML = '<button class = "close_btn">x</button>';
+	//вешаем на кнопку действие закрытия модально 
+					var close = document.querySelector(".close_btn");
+						close.onclick = function(){
+							modal.classList.remove("active");
+						}
+				}
+				this.modalCenter();
+			},
+			modalCenter: function(){
+			},
+
+			}
+		modal.target = document.querySelector(".start_btn");
+
+		modal.onTarget();
+		
+
+	
+
+	</script>
+</body>
+</html>
