@@ -40,32 +40,34 @@
 			width: 200,
 			height: 200,
 			target: null,
+			show: document.querySelector(".modal"),
 			onTarget: function(){
 				var width = this.width;
 				var height = this.height;
 				this.target.onclick = function(){
-					var modal = document.querySelector(".modal");
-					modal.classList.add("active");
-					modal.style.width = width + "px";
-					modal.style.height = height + "px";
-	//добавляем кнопку закрытия
-					var divElement = document.querySelector(".modal");
-					divElement.classList.add("modal");
-					divElement.innerHTML = '<button class = "close_btn">x</button>';
-	//вешаем на кнопку действие закрытия модально 
-					var close = document.querySelector(".close_btn");
-						close.onclick = function(){
-							modal.classList.remove("active");
-						}
+					modal.show.classList.add("active");
+					modal.show.style.width = width + "px";
+					modal.show.style.height = height + "px";
 				}
 				this.modalCenter();
+				this.modalClose();
 			},
 			modalCenter: function(){
+				modal.show.style.marginLeft = - (this.width / 2) + "px";
 			},
-
+			modalClose: function(){
+	//добавляем кнопку закрытия
+				var divElement = document.querySelector(".modal");
+				divElement.classList.add("modal");
+				divElement.innerHTML = '<button class = "close_btn">x</button>' + '<h1>Hello world</h2>';
+	//вешаем на кнопку действие закрытия модально 
+				var close = document.querySelector(".close_btn");
+					close.onclick = function(){
+						modal.show.classList.remove("active");
+					}
+			},
 			}
 		modal.target = document.querySelector(".start_btn");
-
 		modal.onTarget();
 		
 
